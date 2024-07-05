@@ -36,6 +36,7 @@ def delete_image(image_path):
         os.remove(image_path)  # Delete the image file
         # st.success(f"Image '{file}' deleted successfully.")
         st.session_state['app_already_run'] = False
+        st.session_state['predicted_label_prev'] = ''
         st.experimental_rerun()
     except PermissionError:
         st.error("Error: You don't have permission to delete the image.")
@@ -183,8 +184,14 @@ if st.session_state['logged_in']:
             st.markdown('pjhade@buffalo.edu')
         
     with tab2:
-        st.write(f"## Title of the application 2")
-        st.empty()
+        with st.expander('About our Dataset'):
+            st.write(f"### Glimpse about MIT places dataset:")
+            st.markdown(f'<div font_size: 14px; style="text-align: justify; margin-bottom: 8px"> {ads.about_dataset} </div>  ', unsafe_allow_html=True)
+            # st.write()
+            st.empty()
+            st.write(f"### Class Information Table:")
+            st.table(pd.DataFrame(ads.data))
+            st.empty()
 else:
     st.title('Login')
     

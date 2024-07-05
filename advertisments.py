@@ -9,6 +9,46 @@ class_names = ['airport_terminal',
                         'jewelry_shop',
                         'railroad_track']
 
+class_actual_name = ['Airport Terminal',
+                     'Auditorium',
+                     'Bedroom',
+                     'Book Store',
+                     'Bus Station and Buses',
+                     'Cloths Store',
+                     'Computer and Gadgets Room',
+                     'Food Court',
+                     'Jewelry Shop',
+                     'Railways']
+class_description =  [
+    "A terminal where passengers embark and disembark from aircraft.",
+    "A large room or hall used for public gatherings, typically lectures or performances.",
+    "A room used for sleeping, typically containing a bed and other furniture.",
+    "A store where books are sold.",
+    "An area where buses arrive and depart.",
+    "A store selling clothes and accessories.",
+    "A room equipped with computers for work or study.",
+    "An area in a shopping center or airport where various food vendors sell food.",
+    "A shop specializing in jewelry.",
+    "A track or train or a train stations with passengers."
+]
+
+data = {
+    'Class Name': class_actual_name,
+    'Class Key': class_names,
+    'Description': class_description,
+    '# Samples': [5000] * len(class_names)
+}
+
+about_dataset = '''
+Explore the MIT Places dataset, a comprehensive collection designed for advancing scene recognition and classification 
+in computer vision. This dataset features a diverse array of images encompassing of around 365 classes from various places
+we sampled the dataset with 10 classes for our usecase. Each image is meticulously labeled with its corresponding
+scene category, making it ideal for training and evaluating algorithms in scene understanding, object detection,
+and semantic segmentation. Researchers and developers utilize the MIT Places dataset to push the boundaries of
+visual recognition systems, harnessing its breadth and depth to innovate in fields requiring robust scene
+analysis and classification capabilities.
+'''
+
 introduction_to_application = '''Introducing our innovative application that leverages image analysis to deliver highly relevant ads and personalized messages based on the pictures you upload. By examining your photos, our app tailors advertisements and communications to match your interests and preferences, ensuring a unique and engaging user experience. Enjoy a new level of personalization and relevance with every interaction.'''
 
 predicted_label_messages = {
@@ -65,7 +105,10 @@ urls_dict = {
     'clothing_store' : {
         'videos': ['https://youtu.be/zY3atcmLBag?si=3sFZhQ2bLokcByw4',
                    'https://youtu.be/Ob570Cescv4?si=kGlt_gjlQHjkOYFe',
-                   'https://youtu.be/jxXTyO16Fe0?si=VypdENbWp34HNnlv'],
+                   'https://www.youtube.com/watch?v=jxXTyO16Fe0',
+                   'https://www.youtube.com/watch?v=Dt4Zs0lhnCM',
+                   'https://youtu.be/DdFnz8j9trQ?si=2CpJNGKZa1PpCZw6',
+                   'https://youtu.be/Xe3evWq5tas?si=oxJ90F1THN42Z9XY'],
         'images' : ['ads_imgs/cloth_1.jpeg',
                     'ads_imgs/cloth_2.png']
     },
@@ -85,9 +128,9 @@ urls_dict = {
     },
     'jewelry_shop' : {
         'videos': ['https://youtu.be/sNiKPw4lagY?si=UR69jrlgWJDE4LjT',
-                   'https://youtu.be/-PudvBGUVG0?si=RmpV8jh7LFBlivrp',
                    'https://www.youtube.com/watch?v=sNiKPw4lagY',
-                   'https://www.youtube.com/watch?v=KQ__0x-9KTs'],
+                   'https://www.youtube.com/watch?v=KQ__0x-9KTs',
+                   'https://www.youtube.com/watch?v=k5A4zWJ2czM'],
         'images' : ['ads_imgs/jew_1.jpeg',
                     'ads_imgs/tanishq_1.jpg']
     },
