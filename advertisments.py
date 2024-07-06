@@ -82,6 +82,7 @@ urls_dict = {
     'bedroom' : {
         'videos': ['https://youtu.be/Y2AnauPX1hM?si=RJ7P4OKtzvqiDdgw',
                    'https://youtu.be/wtCP_zNDaXU?si=ItVHE82VA2NOIwTy',
+                   'https://www.youtube.com/watch?v=dM5H0yoCEOc',
                    'https://youtu.be/ecsVyIOY-Ig?si=YSSAA43IxBbSLvCE',
                    'https://youtu.be/7qdt0X4fEbk?si=W7we0U8ZwJAdkUnG',
                    'https://youtu.be/kjVf8ptmDmk?si=G_6q-hn4GV7len2d'],
@@ -98,7 +99,9 @@ urls_dict = {
     },
     'bus_station-indoor' : {
         'videos': ['https://youtu.be/50I-fGKcZ58?si=YKTODDIJjWdxvlh-',
-                   'https://youtu.be/79phlhutGLg?si=wYAIYV9SmEN1SMgj'],
+                   'https://youtu.be/79phlhutGLg?si=wYAIYV9SmEN1SMgj',
+                   'https://www.youtube.com/watch?v=qBMpVjywkLQ',
+                   'https://www.youtube.com/watch?v=NuWS4XGb-G4'],
         'images' : ['ads_imgs/subway_1.jpg',
                     'ads_imgs/travel_2.jpg']
     },

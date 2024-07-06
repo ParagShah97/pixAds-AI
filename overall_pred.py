@@ -14,7 +14,7 @@ class LabelPred():
         self.DenseModel = ms.Densenet(in_channel=3, classes=10)
         self.resnetModel = ms.ResNet18(num_classes=10)
         self.vgg13Model = ms.VGG13(num_classes=10)
-        # self.alexnetModel = ms.AlaxNet_custom(in_channels=3, out_classes=10)
+        self.alexnetModel = ms.AlaxNet_custom(in_channels=3, out_classes=10)
         self.DenseModel.load_state_dict(torch.load('model_weights/densenet_final_project_75.pth',  map_location=torch.device('cpu')))
         self.resnetModel.load_state_dict(torch.load('model_weights/rnet_model_accuracy_82.29809406279995.pth', map_location=torch.device('cpu')))
         self.vgg13Model.load_state_dict(torch.load('model_weights/vgg_final_project_70.pth', map_location=torch.device('cpu')))
@@ -29,6 +29,10 @@ class LabelPred():
         predicted_class = ads.class_names[predicted.item()]
         # print(f"The predicted class is: {predicted_class}")
         return predicted_class
+    
+    # getModelInstance: Method will provide the model instances.
+    def getModelInstance(self):
+        return (self.resnetModel, self.vgg13Model, self.DenseModel, self.alexnetModel)
 
     # predict: Method takes the images and return the most reliable label.
     def predict(self, input_image):
@@ -47,7 +51,7 @@ class LabelPred():
         for i in range(3):
             return_labels.append(self.label_pred_internal(model_inst[i], image))
         word_counts = Counter(return_labels)
-        print('Word count ()', word_counts, return_labels)
+        print('Predicted labels', return_labels)
         most_frequent_word = word_counts.most_common(1)[0][0]
         return most_frequent_word
     

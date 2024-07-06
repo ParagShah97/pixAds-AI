@@ -15,7 +15,9 @@ def initialize():
         st.session_state['logged_in'] = False
         # Session state to check if the applicaton need to re run again or not.
         st.session_state['app_already_run'] = False
+        # Session state for storing the previously stored label.
         st.session_state['predicted_label_prev'] = ''
+        st.session_state['models_instance'] = op.LabelPred()
         
 
 # Call the initialization function at the beginning of the app start.
@@ -25,10 +27,7 @@ initialize()
 def login(username, password):
     if username == 'paragsha' and password == 'paragsha':
         st.session_state['logged_in'] = True
-        # with st.spinner("Processing"):
-        #     sleep(3)
-
-        
+       
 # delete_image: method removes the images from the folder location.
 def delete_image(image_path):
     print('image path', image_path)
@@ -40,22 +39,23 @@ def delete_image(image_path):
         st.experimental_rerun()
     except PermissionError:
         st.error("Error: You don't have permission to delete the image.")
-    
- # adv_pred: Method will predict the advertisment for the uploaded images.
+
+# adv_pred: Method will predict the advertisment for the uploaded images.
 def adv_pred(folder_path):
     label = []
     # label = ''
     with st.spinner("Processing"):
         for root, _, files in os.walk(folder_path):
             if len(files) == 0 or st.session_state['app_already_run']:
-                print('Break hua')
+                print('loop breaker run')
                 break
             for file in files:
                 if file.lower().endswith((".jpg", ".jpeg", ".png")):  # Check for common image extensions
+                    LabelPredInst = op.LabelPred()
+                    # st.session_state['models_instance'] = LabelPredInst
                     image_path = os.path.join(root, file)
-                    denseInst = op.LabelPred()
-                    # label = denseInst.predict(image_path)
-                    label.append(denseInst.predict(image_path))
+                    # label = LabelPredInst.predict(image_path)
+                    label.append(LabelPredInst.predict(image_path))
     
     if len(label) != 0:
         word_counts = Counter(label)
@@ -88,7 +88,7 @@ def save_uploaded_image(uploaded_file, save_folder="images"):
 # Main application
 # Condition (track) for logged in user.
 if st.session_state['logged_in']:
-    tab1, tab2 = st.tabs(["Home", "About Us"])
+    tab1, tab2 = st.tabs(["Home", "About Application"])
     
     imges = []
     with tab1:
@@ -123,6 +123,8 @@ if st.session_state['logged_in']:
                         image_path = os.path.join(root, file)
                         with Image.open(image_path) as image:
                             # Display image with filename as caption and optional width
+                            # _, col2_pic, _ = st.columns([1, 1, 1])
+                            # with col2_pic:
                             st.image(image, caption=os.path.splitext(file)[0], width=600)
 
                             # Create like and delete buttons with unique keys (using f-strings)
@@ -155,7 +157,7 @@ if st.session_state['logged_in']:
                 # Select the random ads from the ads pool.
                 random_video = random.choice(ads.urls_dict[label_to_predict]['videos'])
                 random_images = random.choice(ads.urls_dict[label_to_predict]['images'])
-                print('=====', random_video, random_images)
+                # print('=====', random_video, random_images)
                 st.markdown("""<hr style="border-top: 1px solid #ddd;"/>""", unsafe_allow_html=True)
                 st.markdown(f'<div font_size: 14px; style="text-align: center; margin-bottom: 8px"> ♡ {ads.predicted_label_messages[label_to_predict]} ♡ </div>  ', unsafe_allow_html=True)
                 st.markdown("""<hr style="border-top: 1px solid #ddd;"/>""", unsafe_allow_html=True)
@@ -177,14 +179,14 @@ if st.session_state['logged_in']:
             st.markdown('Parag Shah')
             st.markdown('paragsha@buffalo.edu')
         with col2_foot:
-            st.markdown('SV reddy')
-            st.markdown('svreddy@buffalo.edu')
+            st.markdown('Sai Venkat Reddy')
+            st.markdown('Ssheri@ubuffalo.edu')
         with col3_foot:
             st.markdown('Prajakta Jhade')
             st.markdown('pjhade@buffalo.edu')
         
     with tab2:
-        with st.expander('About our Dataset'):
+        with st.expander('About our Dataset', expanded=True):
             st.write(f"### Glimpse about MIT places dataset:")
             st.markdown(f'<div font_size: 14px; style="text-align: justify; margin-bottom: 8px"> {ads.about_dataset} </div>  ', unsafe_allow_html=True)
             # st.write()
@@ -192,8 +194,19 @@ if st.session_state['logged_in']:
             st.write(f"### Class Information Table:")
             st.table(pd.DataFrame(ads.data))
             st.empty()
+            resnet_model, vgg_model, densenet_model, alexnet_model = st.session_state['models_instance'].getModelInstance()
+
+        
+        with st.expander('Resnet Model Architecture'):
+            st.write(resnet_model)
+        with st.expander('VGG13 Model Architecture'):
+            st.write(vgg_model)
+        with st.expander('DenseNet Model Architecture'):
+            st.write(densenet_model)
+        with st.expander('AlexNet Model Architecture'):
+            st.write(alexnet_model)
 else:
-    st.title('Login')
+    st.title("Piks~AI Login")
     
     with st.form(key='login_form'):
         username = st.text_input('Username')
