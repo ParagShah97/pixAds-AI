@@ -68,13 +68,13 @@ predicted_label_messages = {
 urls_dict = {
     'airport_terminal' : {
         'videos': ['https://www.youtube.com/watch?v=htO1oFwCzik',
-                   'https://youtu.be/uQHhYRuaEtM?si=wMSvvZf5hxHoRV9y',
-                   'https://youtu.be/WdSkkN2OKvs?si=b3ijTJI3IAewULVs'],
+                   'https://www.youtube.com/watch?v=uQHhYRuaEtM',
+                   'https://www.youtube.com/watch?v=WdSkkN2OKvs'],
         'images' : ['ads_imgs/travel_1.jpg', 'ads_imgs/dominos_2.jpg']
     },
     'auditorium' : {
-        'videos': ['https://youtu.be/KiEeIxZJ9x0?si=ivkuTymFA5Koc4p3',
-                   'https://youtu.be/ZAYhcbfHKPc?si=kYHdnfR6pJkF9Y_3'],
+        'videos': ['https://www.youtube.com/watch?v=KiEeIxZJ9x0',
+                   'https://www.youtube.com/watch?v=ZAYhcbfHKPc'],
         'images' : ['ads_imgs/popcorn_1.jpeg',
                     'ads_imgs/popcorn_2.jpeg',
                     'ads_imgs/dominos_2.jpg']
@@ -120,7 +120,7 @@ urls_dict = {
     },
     'food_court' : {
         'videos': ['https://youtu.be/79phlhutGLg?si=wYAIYV9SmEN1SMgj',
-                   'https://youtu.be/6pX8MfYkebk?si=S-KiBpzmmaHZ45bk',
+                   'https://www.youtube.com/watch?v=6pX8MfYkebk',
                    'https://youtu.be/hBkk0bbn2c0?si=I_xrulNrQ8xgQIFY'],
         'images' : ['ads_imgs/subway_1.jpg',
                     'ads_imgs/mc_d_1.jpg',
