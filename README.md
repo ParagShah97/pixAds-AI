@@ -26,16 +26,16 @@ Application facilitates the user to upload the images of their choice, the image
 Note: For running the application user required to install.
 
 1) Streamlit
-## pip install streamlit
+#### pip install streamlit
 
 2) Torch, Torchvision
-## https://pytorch.org/get-started/locally/
+#### https://pytorch.org/get-started/locally/
 
 3) pillow
-## pip install pillow
+#### pip install pillow
 
 4) OpenCV
-## pip install opencv-python
+#### pip install opencv-python
 
 
 Steps to run the application:
@@ -44,7 +44,7 @@ Steps to run the application:
 3) Run the command 'streamlit run master.py'
 4) Program will automatically redirect to your default browser, else open 'http://localhost:8501/' on your browser.
 5) User can login with credentials
-# User: paragsha
-# Password: paragsha
+#### User: paragsha
+#### Password: paragsha
 6) User can upload the image of their choice, should be related to the categories defined above (10 classes).
 7) Wait and see the results.
