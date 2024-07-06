@@ -26,16 +26,16 @@ Application facilitates the user to upload the images of their choice, the image
 Note: For running the application user required to install.
 
 1) Streamlit
-# pip install streamlit
+## pip install streamlit
 
 2) Torch, Torchvision
-# https://pytorch.org/get-started/locally/
+## https://pytorch.org/get-started/locally/
 
 3) pillow
-# pip install pillow
+## pip install pillow
 
 4) OpenCV
-# pip install opencv-python
+## pip install opencv-python
 
 
 Steps to run the application:
